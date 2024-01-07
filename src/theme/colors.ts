@@ -1,4 +1,4 @@
-import type { COLOR_TYPE } from "../@types/theme";
+import type { COLOR_TYPE } from "../types/theme";
 
 export const colors: COLOR_TYPE = {
   background: "#101026",

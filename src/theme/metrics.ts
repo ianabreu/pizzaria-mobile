@@ -1,5 +1,5 @@
 import { Dimensions, Platform } from "react-native";
-import { METRICS_TYPE } from "../@types/theme";
+import { METRICS_TYPE } from "../types/theme";
 
 const { width, height } = Dimensions.get("window");
 

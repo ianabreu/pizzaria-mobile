@@ -1,4 +1,4 @@
-import { FONTS_TYPE } from "../@types/theme";
+import { FONTS_TYPE } from "../types/theme";
 
 export const fonts: FONTS_TYPE = {
   family: {
