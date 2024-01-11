@@ -4,10 +4,10 @@ import AuthRoutes from "./auth.routes";
 import AppRoutes from "./app.routes";
 import { ActivityIndicator, View } from "react-native";
 import { colors } from "../theme";
+import { useAuth } from "../contexts/AuthContext";
 
 export function Routes() {
-  const isAuthenticated = true;
-  const loading = false;
+  const { isAuthenticated, loading } = useAuth();
   if (loading) {
     return (
       <View
@@ -21,5 +21,5 @@ export function Routes() {
       </View>
     );
   }
-  return isAuthenticated ? <AuthRoutes /> : <AppRoutes />;
+  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
 }
