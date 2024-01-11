@@ -4,13 +4,15 @@ import { METRICS_TYPE } from "../types/theme";
 const { width, height } = Dimensions.get("window");
 
 export const metrics: METRICS_TYPE = {
-  padding_small: 4,
-  padding_default: 8,
-  padding_large: 16,
+  padding_sm: 4,
+  padding_base: 8,
+  padding_lg: 16,
+  padding_xlg: 24,
 
-  margin_small: 4,
-  margin_default: 8,
-  margin_large: 16,
+  margin_sm: 4,
+  margin_base: 8,
+  margin_lg: 16,
+  margin_xlg: 24,
 
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
@@ -18,8 +20,8 @@ export const metrics: METRICS_TYPE = {
   navBarHeight: Platform.OS === "ios" ? 64 : 54,
   statusBarHeight: Platform.OS === "ios" ? 20 : 0,
 
-  radius_small: 4,
-  radius_default: 8,
-  radius_large: 16,
-  radius_xlarge: 24,
+  rounded_sm: 4,
+  rounded_base: 8,
+  rounded_lg: 16,
+  rounded_xlg: 24,
 };

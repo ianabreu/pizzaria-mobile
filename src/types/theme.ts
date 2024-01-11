@@ -10,21 +10,26 @@ export interface COLOR_TYPE {
 }
 
 export interface METRICS_TYPE {
-  padding_small: number;
-  padding_default: number;
-  padding_large: number;
-  margin_small: number;
-  margin_default: number;
-  margin_large: number;
+  padding_sm: number;
+  padding_base: number;
+  padding_lg: number;
+  padding_xlg: number;
+
+  margin_sm: number;
+  margin_base: number;
+  margin_lg: number;
+  margin_xlg: number;
+
   screenWidth: number;
   screenHeight: number;
   tabBarHeight: number;
   navBarHeight: number;
   statusBarHeight: number;
-  radius_small: number;
-  radius_default: number;
-  radius_large: number;
-  radius_xlarge: number;
+
+  rounded_sm: number;
+  rounded_base: number;
+  rounded_lg: number;
+  rounded_xlg: number;
 }
 export interface FONTS_TYPE {
   family: {

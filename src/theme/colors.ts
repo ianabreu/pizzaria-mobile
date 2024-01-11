@@ -1,10 +1,10 @@
 import type { COLOR_TYPE } from "../types/theme";
 
 export const colors: COLOR_TYPE = {
-  background: "#101026",
+  background: "#1d1d2e",
   foreground: "#FFFFFF",
 
-  input: "#1d1d2e",
+  input: "#101026",
   placeholder: "#f0f0f0",
 
   primary: "#ff3f4b",
