@@ -11,7 +11,8 @@ export const fonts: FONTS_TYPE = {
     md: 14,
     lg: 16,
     xl: 18,
-    xxl: 22,
-    xxxl: 26,
+    xl2: 22,
+    xl3: 26,
+    xl4: 32,
   },
 };

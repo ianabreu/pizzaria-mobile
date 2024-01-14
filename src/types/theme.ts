@@ -42,7 +42,8 @@ export interface FONTS_TYPE {
     md: number;
     lg: number;
     xl: number;
-    xxl: number;
-    xxxl: number;
+    xl2: number;
+    xl3: number;
+    xl4: number;
   };
 }
