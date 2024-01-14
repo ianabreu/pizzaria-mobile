@@ -7,6 +7,7 @@ export interface COLOR_TYPE {
   secondary: string;
   terciary: string;
   cancel: string;
+  error: string;
 }
 
 export interface METRICS_TYPE {

@@ -1,14 +1,15 @@
 import type { COLOR_TYPE } from "../types/theme";
 
 export const colors: COLOR_TYPE = {
-  background: "#1d1d2e",
+  background: "#24262F",
   foreground: "#FFFFFF",
 
-  input: "#101026",
-  placeholder: "#f0f0f0",
+  input: "#E9E9EA",
+  placeholder: "#6C6E74",
 
-  primary: "#ff3f4b",
-  secondary: "#3fffa3",
+  primary: "#FD5C2E",
+  secondary: "#11AD54",
   terciary: "#3fd1ff",
   cancel: "#5a5a5a",
+  error: "#ff3f4b",
 };
