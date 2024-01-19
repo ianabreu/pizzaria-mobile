@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,11 +11,12 @@ import { colors, fonts, metrics } from "../../theme";
 
 interface QuantityInputProps {
   label?: string;
+  setQuantity: (text: string) => void;
+  quantity: string;
 }
 
 export const QuantityInput = memo(
-  ({ label = "Quantidade" }: QuantityInputProps) => {
-    const [quantity, setQuantity] = useState("1");
+  ({ label = "Quantidade", quantity, setQuantity }: QuantityInputProps) => {
     const styles = StyleSheet.create({
       container: {
         flexDirection: "row",
@@ -23,7 +24,6 @@ export const QuantityInput = memo(
         justifyContent: "space-between",
         gap: metrics.margin_lg,
         height: 40,
-        marginVertical: 8,
       },
       label: {
         flex: 0.8,
@@ -62,10 +62,10 @@ export const QuantityInput = memo(
     function decraseQuantity() {
       if (Number(quantity) < 1) return setQuantity("1");
       if (Number(quantity) <= 1) return;
-      setQuantity(prev => String(Number(prev) - 1));
+      setQuantity(String(Number(quantity) - 1));
     }
     function increaseQuantity() {
-      setQuantity(prev => String(Number(prev) + 1));
+      setQuantity(String(Number(quantity) + 1));
     }
     function handleSetQuantity(value: string) {
       let newValue = value.replace(/\D/g, "");
