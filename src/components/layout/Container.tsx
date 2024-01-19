@@ -4,17 +4,31 @@ import { colors, metrics } from "../../theme";
 
 interface ContainerProps extends ViewProps {
   children?: ReactNode;
+  justify?:
+    | "center"
+    | "flex-start"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "flex-end";
+  align?: "center" | "flex-start" | "flex-end";
 }
 
-export function Container({ children, style, ...ViewProps }: ContainerProps) {
+export function Container({
+  children,
+  justify = "center",
+  align = "center",
+  style,
+  ...ViewProps
+}: ContainerProps) {
   const styles = StyleSheet.create({
     container: {
       padding: metrics.padding_lg,
       width: metrics.screenWidth,
       flex: 1,
       backgroundColor: colors.background,
-      alignItems: "center",
-      justifyContent: "center",
+      alignItems: align,
+      justifyContent: justify,
     },
   });
   return (
