@@ -7,15 +7,14 @@ interface InputProps extends TextInputProps {
 export function Input({ size = "small", style, ...rest }: InputProps) {
   const styles = StyleSheet.create({
     input: {
-      width: size === "large" ? "90%" : "100%",
+      maxWidth: "100%",
+      width: metrics.screenWidth,
       height: size === "large" ? 60 : 40,
       paddingHorizontal: metrics.padding_lg,
       marginBottom: metrics.margin_lg,
-      borderWidth: 0.5,
       borderRadius: metrics.rounded_sm,
-      borderColor: colors.placeholder,
       backgroundColor: colors.input,
-      color: colors.foreground,
+      color: colors.background,
       fontSize: size === "large" ? fonts.size.xl2 : fonts.size.lg,
       textAlign: "left",
     },
