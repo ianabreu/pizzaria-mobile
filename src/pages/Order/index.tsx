@@ -1,6 +1,13 @@
 import React, { useState, useEffect, memo } from "react";
 import Toast from "react-native-toast-message";
-import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -16,6 +23,7 @@ import { CategoryProps } from "../../types/category";
 import { ProductProps } from "../../types/product";
 import { Select } from "../../components/ui/select";
 import { ModalPicker } from "../../components/ui/modalPicker";
+import { ListItem } from "../../components/layout/listItem";
 
 type RouteDetailParams = {
   order: {
@@ -25,7 +33,7 @@ type RouteDetailParams = {
 };
 type OrderRouteProps = RouteProp<RouteDetailParams, "order">;
 
-type ItemProps = {
+export type ItemProps = {
   id: string;
   product_id: string;
   name: string;
@@ -115,20 +123,52 @@ function Order() {
   function handleChangeProduct(item: ProductProps) {
     setProductSelected(item);
   }
+  async function handleAdd() {
+    try {
+      const response = await api.post("/order/add", {
+        order_id: order_id,
+        product_id: productSelected?.id,
+        amount: Number(quantity),
+      });
+      let data: ItemProps = {
+        id: response.data.id,
+        product_id: productSelected?.id as string,
+        name: productSelected?.name as string,
+        amount: Number(quantity),
+      };
+      setItems(prev => [...prev, data]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleDelete(item_id: string) {
+    try {
+      await api.delete("/order/remove", {
+        params: {
+          item_id,
+        },
+      });
+      setItems(prev => prev.filter(item => item.id !== item_id));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <Container justify="flex-start" align="flex-start">
-      <View style={{ flex: 1, width: "100%" }}>
+      <View style={{ width: "100%" }}>
         <View style={styles.row}>
           <Title>Mesa {table}</Title>
-          <TouchableOpacity style={{ padding: 4 }} onPress={handleCloseOrder}>
-            <Icon
-              name="trash-outline"
-              style={{ backgroundColor: "transparent" }}
-              size={28}
-              color={colors.error}
-            />
-          </TouchableOpacity>
+          {items.length === 0 && (
+            <TouchableOpacity style={{ padding: 4 }} onPress={handleCloseOrder}>
+              <Icon
+                name="trash-outline"
+                style={{ backgroundColor: "transparent" }}
+                size={28}
+                color={colors.error}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
         <View
@@ -156,18 +196,34 @@ function Order() {
               alignItems: "center",
               gap: 8,
             }}>
-            <Button style={{ flex: 0.5 }} variant="terciary">
+            <Button
+              style={{ flex: 0.5 }}
+              variant="terciary"
+              onPress={handleAdd}>
               +
             </Button>
             <Button
               disabled={items.length === 0}
-              style={{ flex: 2, opacity: items.length === 0 ? 0.3 : 1 }}
+              style={{
+                flex: 2,
+                opacity: items.length === 0 ? 0.3 : 1,
+              }}
               variant="secondary">
               Avançar
             </Button>
           </View>
         </View>
       </View>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1 }}
+        data={items}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <ListItem handleDelete={handleDelete} data={item} />
+        )}
+      />
+
       <Modal transparent visible={modalCategoryVisible} animationType="fade">
         <ModalPicker
           handleCloseModal={() => setModalCategoryVisible(false)}
