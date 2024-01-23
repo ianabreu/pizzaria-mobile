@@ -1,14 +1,14 @@
 import { StyleSheet, Text, TextProps } from "react-native";
-import { colors, fonts } from "../../theme";
+import theme, { colors, fonts } from "../../theme";
 
 interface TitleProps extends TextProps {}
 
 export function Title({ children, style, ...TextProps }: TitleProps) {
   const styles = StyleSheet.create({
     title: {
-      fontSize: fonts.size.xl4,
+      fontSize: theme.font.size.xxxxl,
       fontWeight: "700",
-      color: colors.foreground,
+      color: theme.color.text,
     },
   });
   return (

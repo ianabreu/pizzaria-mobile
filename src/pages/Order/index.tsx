@@ -4,7 +4,6 @@ import {
   FlatList,
   Modal,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -13,8 +12,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { Container } from "../../components/layout/container";
-import { Title } from "../../components/ui/title";
-import { colors, metrics } from "../../theme";
+import { Typography } from "../../components/ui/typography";
+import theme from "../../theme";
 import { QuantityInput } from "../../components/layout/quantity";
 import { Button } from "../../components/ui/button";
 import { api } from "../../services/api";
@@ -46,8 +45,8 @@ function Order() {
       flexDirection: "row",
       width: "100%",
       alignItems: "center",
-      marginTop: 24,
-      gap: 16,
+      marginTop: theme.spacing.xl,
+      gap: theme.spacing.lg,
     },
   });
   const {
@@ -123,6 +122,9 @@ function Order() {
   function handleChangeProduct(item: ProductProps) {
     setProductSelected(item);
   }
+  function handleFinishOrder() {
+    navigation.navigate("finishOrder");
+  }
   async function handleAdd() {
     try {
       const response = await api.post("/order/add", {
@@ -158,14 +160,14 @@ function Order() {
     <Container justify="flex-start" align="flex-start">
       <View style={{ width: "100%" }}>
         <View style={styles.row}>
-          <Title>Mesa {table}</Title>
+          <Typography variant="title">Mesa {table}</Typography>
           {items.length === 0 && (
             <TouchableOpacity style={{ padding: 4 }} onPress={handleCloseOrder}>
               <Icon
                 name="trash-outline"
                 style={{ backgroundColor: "transparent" }}
                 size={28}
-                color={colors.error}
+                color={theme.color.danger}
               />
             </TouchableOpacity>
           )}
@@ -174,8 +176,8 @@ function Order() {
         <View
           style={{
             width: "100%",
-            marginVertical: metrics.margin_lg,
-            gap: 16,
+            marginVertical: theme.spacing.lg,
+            gap: theme.spacing.lg,
           }}>
           <Select
             disabled={category.length === 0}
@@ -196,10 +198,7 @@ function Order() {
               alignItems: "center",
               gap: 8,
             }}>
-            <Button
-              style={{ flex: 0.5 }}
-              variant="terciary"
-              onPress={handleAdd}>
+            <Button style={{ flex: 0.5 }} variant="info" onPress={handleAdd}>
               +
             </Button>
             <Button
@@ -208,7 +207,8 @@ function Order() {
                 flex: 2,
                 opacity: items.length === 0 ? 0.3 : 1,
               }}
-              variant="secondary">
+              onPress={handleFinishOrder}
+              variant="success">
               Avançar
             </Button>
           </View>

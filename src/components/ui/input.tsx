@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, TextInputProps } from "react-native";
-import { colors, fonts, metrics } from "../../theme";
+import theme from "../../theme";
 
 interface InputProps extends TextInputProps {
   size?: "small" | "large";
@@ -7,21 +7,22 @@ interface InputProps extends TextInputProps {
 export function Input({ size = "small", style, ...rest }: InputProps) {
   const styles = StyleSheet.create({
     input: {
+      fontFamily: theme.font.family.regular,
       maxWidth: "100%",
-      width: metrics.screenWidth,
+      width: theme.spacing.w_screen,
       height: size === "large" ? 60 : 40,
-      paddingHorizontal: metrics.padding_lg,
-      marginBottom: metrics.margin_lg,
-      borderRadius: metrics.rounded_sm,
-      backgroundColor: colors.input,
-      color: colors.background,
-      fontSize: size === "large" ? fonts.size.xl2 : fonts.size.lg,
+      paddingHorizontal: theme.spacing.lg,
+      marginBottom: theme.spacing.lg,
+      borderRadius: theme.rounded.sm,
+      backgroundColor: theme.color.input,
+      color: theme.color.background,
+      fontSize: size === "large" ? theme.font.size.xxl : theme.font.size.lg,
       textAlign: "left",
     },
   });
   return (
     <TextInput
-      placeholderTextColor={colors.placeholder}
+      placeholderTextColor={theme.color.placeholder}
       style={[styles.input, style]}
       {...rest}
     />

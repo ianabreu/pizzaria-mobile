@@ -5,16 +5,28 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { useAuth } from "../../contexts/AuthContext";
 import { Container } from "../../components/layout/container";
+import Toast from "react-native-toast-message";
+import theme from "../../theme";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signIn, loadingAuth, isAuthenticated } = useAuth();
+  const { signIn, loadingAuth } = useAuth();
 
   async function handleLogin() {
-    if (!email.trim() || !password.trim()) {
-      //enviar notificacao de erro
+    if (!email.trim()) {
+      Toast.show({
+        type: "error",
+        text1: "Preencha o email",
+      });
+      return;
+    }
+    if (!password.trim()) {
+      Toast.show({
+        type: "error",
+        text1: "Senha inválida",
+      });
       return;
     }
     await signIn({ email, password });
@@ -52,6 +64,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 16,
+    marginTop: theme.spacing.lg,
   },
 });

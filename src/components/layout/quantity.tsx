@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { colors, fonts, metrics } from "../../theme";
+import theme from "../../theme";
 
 interface QuantityInputProps {
   label?: string;
@@ -22,14 +22,14 @@ export const QuantityInput = memo(
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: metrics.margin_lg,
+        gap: theme.spacing.lg,
         height: 40,
       },
       label: {
         flex: 0.8,
-        fontSize: fonts.size.xl2,
+        fontSize: theme.font.size.xxl,
         fontWeight: "700",
-        color: colors.foreground,
+        color: theme.color.text,
       },
       button: {
         flex: 1,
@@ -40,18 +40,18 @@ export const QuantityInput = memo(
       input: {
         flex: 1,
         textAlign: "center",
-        backgroundColor: colors.input,
-        fontSize: fonts.size.lg,
+        backgroundColor: theme.color.input,
+        fontSize: theme.font.size.lg,
       },
       arrowBtn: {
         flex: 1,
-        backgroundColor: colors.input,
+        backgroundColor: theme.color.input,
         alignItems: "center",
         justifyContent: "center",
       },
       icon: {
-        color: colors.background,
-        fontSize: fonts.size.xl4,
+        color: theme.color.background,
+        fontSize: theme.font.size.xxxxl,
         textAlign: "center",
         width: "100%",
         height: "100%",
@@ -91,8 +91,8 @@ export const QuantityInput = memo(
             style={[
               styles.arrowBtn,
               {
-                borderTopLeftRadius: metrics.rounded_sm,
-                borderBottomLeftRadius: metrics.rounded_sm,
+                borderTopLeftRadius: theme.rounded.sm,
+                borderBottomLeftRadius: theme.rounded.sm,
               },
             ]}>
             <Icon name="remove-outline" style={styles.icon} />
@@ -110,8 +110,8 @@ export const QuantityInput = memo(
             style={[
               styles.arrowBtn,
               {
-                borderBottomRightRadius: metrics.rounded_sm,
-                borderTopRightRadius: metrics.rounded_sm,
+                borderBottomRightRadius: theme.rounded.sm,
+                borderTopRightRadius: theme.rounded.sm,
               },
             ]}>
             <Icon name="add-outline" style={styles.icon} />

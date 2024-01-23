@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { colors, fonts, metrics } from "../../theme";
+import theme from "../../theme";
 
 import { CategoryProps } from "../../types/category";
 import { ProductProps } from "../../types/product";
@@ -29,27 +29,27 @@ export function ModalPicker({
       backgroundColor: "rgba(0,0,0,0.6)",
     },
     content: {
-      width: metrics.screenWidth - 20,
-      maxHeight: metrics.screenHeight / 2,
-      backgroundColor: colors.foreground,
+      width: theme.spacing.w_screen - 20,
+      maxHeight: theme.spacing.h_screen / 2,
+      backgroundColor: theme.color.text,
       borderWidth: 1,
-      borderColor: colors.placeholder,
-      borderRadius: metrics.rounded_base,
+      borderColor: theme.color.placeholder,
+      borderRadius: theme.rounded.md,
     },
     title: {
       textTransform: "uppercase",
-      padding: metrics.padding_base,
-      fontSize: fonts.size.xl,
-      color: colors.background,
+      padding: theme.spacing.md,
+      fontSize: theme.font.size.xl,
+      color: theme.color.background,
       fontWeight: "900",
     },
     option: {
       elevation: 1,
     },
     item: {
-      margin: metrics.margin_lg,
-      fontSize: fonts.size.lg,
-      color: colors.background,
+      margin: theme.spacing.lg,
+      fontSize: theme.font.size.lg,
+      color: theme.color.background,
       fontWeight: "700",
     },
   });

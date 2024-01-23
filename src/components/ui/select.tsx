@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from "react-native";
-import { colors, fonts, metrics } from "../../theme";
+import theme from "../../theme";
 import { memo } from "react";
 
 interface SelectProps extends TouchableOpacityProps {
@@ -14,16 +14,16 @@ export const Select = memo(
   ({ optionSelected, disabled, ...rest }: SelectProps) => {
     const styles = StyleSheet.create({
       input: {
-        backgroundColor: colors.input,
-        borderRadius: metrics.rounded_sm,
+        backgroundColor: theme.color.input,
+        borderRadius: theme.rounded.sm,
         width: "100%",
         height: 40,
         justifyContent: "center",
-        paddingHorizontal: metrics.padding_base,
+        paddingHorizontal: theme.spacing.md,
       },
       text: {
-        fontSize: fonts.size.lg,
-        color: disabled ? colors.placeholder : colors.background,
+        fontSize: theme.font.size.lg,
+        color: disabled ? theme.color.placeholder : theme.color.background,
       },
     });
 

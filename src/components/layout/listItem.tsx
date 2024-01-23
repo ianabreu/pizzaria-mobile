@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ItemProps } from "../../pages/Order";
-import { colors, fonts, metrics } from "../../theme";
+import theme from "../../theme";
 import Icon from "react-native-vector-icons/Ionicons";
 
 type ListItemProps = {
@@ -11,7 +11,7 @@ type ListItemProps = {
 export function ListItem({ data, handleDelete }: ListItemProps) {
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: colors.foreground,
+      backgroundColor: theme.color.text,
       width: "100%",
       flex: 1,
       alignItems: "center",
@@ -19,19 +19,19 @@ export function ListItem({ data, handleDelete }: ListItemProps) {
       flexDirection: "row",
       overflow: "hidden",
 
-      borderRadius: 8,
-      marginVertical: metrics.margin_base,
+      borderRadius: theme.rounded.md,
+      marginVertical: theme.spacing.md,
     },
     item: {
-      margin: metrics.margin_lg,
-      color: colors.background,
-      fontSize: fonts.size.lg,
+      margin: theme.spacing.lg,
+      color: theme.color.background,
+      fontSize: theme.font.size.lg,
       fontWeight: "700",
     },
     btn: {
       height: "100%",
       width: "15%",
-      backgroundColor: colors.error,
+      backgroundColor: theme.color.danger,
       alignItems: "center",
       justifyContent: "center",
     },
@@ -46,9 +46,9 @@ export function ListItem({ data, handleDelete }: ListItemProps) {
         onPress={() => handleDelete(data.id)}>
         <Icon
           name="trash-outline"
-          style={{ backgroundColor: "transparent", color: colors.foreground }}
+          style={{ backgroundColor: "transparent", color: theme.color.text }}
           size={25}
-          color={colors.error}
+          color={theme.color.danger}
         />
       </TouchableOpacity>
     </View>

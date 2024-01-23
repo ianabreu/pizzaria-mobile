@@ -8,9 +8,9 @@ import { api } from "../../services/api";
 import { Button } from "../../components/ui/button";
 import { Container } from "../../components/layout/container";
 import { Input } from "../../components/ui/input";
-import { Title } from "../../components/ui/title";
+import { Typography } from "../../components/ui/typography";
 import { StackParamsList } from "../../routes/app.routes";
-import { metrics } from "../../theme";
+import theme from "../../theme";
 import { AxiosError } from "axios";
 
 export default function Dashboard() {
@@ -71,7 +71,9 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <Title style={{ marginBottom: metrics.margin_xlg }}>Novo Pedido</Title>
+      <Typography variant="title" style={{ marginBottom: theme.spacing.xl }}>
+        Novo Pedido
+      </Typography>
       <Input
         placeholder={"Número da mesa"}
         keyboardType="numeric"
@@ -84,7 +86,7 @@ export default function Dashboard() {
       <Button
         size="large"
         onPress={openOrder}
-        variant="secondary"
+        variant="success"
         isLoading={loading}>
         Abrir mesa
       </Button>

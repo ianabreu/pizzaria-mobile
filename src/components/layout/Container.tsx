@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { SafeAreaView, StyleSheet, ViewProps } from "react-native";
-import { colors, metrics } from "../../theme";
+import theme from "../../theme";
 
 interface ContainerProps extends ViewProps {
   children?: ReactNode;
@@ -23,10 +23,10 @@ export function Container({
 }: ContainerProps) {
   const styles = StyleSheet.create({
     container: {
-      padding: metrics.padding_lg,
-      width: metrics.screenWidth,
+      padding: theme.spacing.lg,
+      width: theme.spacing.w_screen,
       flex: 1,
-      backgroundColor: colors.background,
+      backgroundColor: theme.color.background,
       alignItems: align,
       justifyContent: justify,
     },
