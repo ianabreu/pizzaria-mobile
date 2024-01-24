@@ -14,7 +14,10 @@ export type StackParamsList = {
     table: number;
     order_id: string;
   };
-  finishOrder: undefined;
+  finishOrder: {
+    table: number;
+    order_id: string;
+  };
 };
 
 export default function AppRoutes() {

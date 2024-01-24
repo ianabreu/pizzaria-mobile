@@ -146,7 +146,7 @@ function Order() {
     setProductSelected(item);
   }
   function handleFinishOrder() {
-    navigation.navigate("finishOrder");
+    navigation.navigate("finishOrder", { order_id, table });
   }
   async function handleAdd() {
     if (Number(quantity) < 1) {
