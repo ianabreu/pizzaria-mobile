@@ -10,6 +10,7 @@ import {
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useBackHandler } from "@react-native-community/hooks";
 
 import { Container } from "../../components/layout/container";
 import { Typography } from "../../components/ui/typography";
@@ -66,6 +67,28 @@ function Order() {
 
   const [items, setItems] = useState<ItemProps[]>([]);
 
+  useBackHandler(() => {
+    if (items.length > 0) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao sair",
+        text2: "Exclua os itens da lista.",
+        position: "bottom",
+        bottomOffset: 100,
+      });
+      return true;
+    }
+    try {
+      api.delete("/order", {
+        params: {
+          order_id,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    return false;
+  });
   useEffect(() => {
     async function loadCategories() {
       try {
