@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import theme from "../../theme";
+import { Typography } from "../ui/typography";
 
 interface QuantityInputProps {
   label?: string;
@@ -27,9 +28,6 @@ export const QuantityInput = memo(
       },
       label: {
         flex: 0.8,
-        fontSize: theme.font.size.xxl,
-        fontWeight: "700",
-        color: theme.color.text,
       },
       button: {
         flex: 1,
@@ -41,7 +39,8 @@ export const QuantityInput = memo(
         flex: 1,
         textAlign: "center",
         backgroundColor: theme.color.input,
-        fontSize: theme.font.size.lg,
+        color: theme.color.background,
+        fontSize: theme.font.size.md,
       },
       arrowBtn: {
         flex: 1,
@@ -51,11 +50,10 @@ export const QuantityInput = memo(
       },
       icon: {
         color: theme.color.background,
-        fontSize: theme.font.size.xxxxl,
+        fontSize: theme.font.size.xxxl,
         textAlign: "center",
         width: "100%",
         height: "100%",
-        lineHeight: 40,
       },
     });
 
@@ -84,7 +82,9 @@ export const QuantityInput = memo(
 
     return (
       <View style={styles.container}>
-        <Text style={styles.label}>{label}</Text>
+        <Typography variant="subtitle" style={styles.label}>
+          {label}
+        </Typography>
         <View style={styles.button}>
           <TouchableOpacity
             onPress={decraseQuantity}

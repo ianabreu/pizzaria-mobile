@@ -18,6 +18,7 @@ import theme from "./theme";
 import { AuthProvider } from "./contexts/AuthContext";
 
 const defaultViewStyle: StyleProp<ViewStyle> = {
+  marginTop: theme.spacing.lg,
   borderRadius: theme.rounded.sm,
   padding: theme.spacing.sm,
   height: "auto",
@@ -25,14 +26,14 @@ const defaultViewStyle: StyleProp<ViewStyle> = {
 };
 const defaultText1Style: StyleProp<TextStyle> = {
   color: theme.color.text,
-  fontSize: theme.font.size.lg,
+  fontSize: theme.font.size.md,
   fontFamily: theme.font.family.semibold,
   textAlign: "center",
 };
 const defaultText2Style: StyleProp<TextStyle> = {
   color: theme.color.text,
   fontSize: theme.font.size.md,
-  fontFamily: theme.font.family.regular,
+  fontFamily: theme.font.family.semibold,
   textAlign: "center",
 };
 const toastConfig = {

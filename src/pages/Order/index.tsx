@@ -46,7 +46,7 @@ function Order() {
       width: "100%",
       alignItems: "center",
       marginTop: theme.spacing.xl,
-      gap: theme.spacing.lg,
+      gap: theme.spacing.xl,
     },
   });
   const {
@@ -126,6 +126,10 @@ function Order() {
     navigation.navigate("finishOrder");
   }
   async function handleAdd() {
+    if (Number(quantity) < 1) {
+      setQuantity("1");
+      return;
+    }
     try {
       const response = await api.post("/order/add", {
         order_id: order_id,

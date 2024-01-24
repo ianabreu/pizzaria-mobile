@@ -8,10 +8,12 @@ interface TypographyProps extends TextProps {
 enum STYLES {
   title,
   button,
+  body,
+  subtitle,
 }
 
 export function Typography({
-  variant = "title",
+  variant = "body",
   children,
   style,
   size,
@@ -19,16 +21,23 @@ export function Typography({
 }: TypographyProps) {
   const styles = StyleSheet.create({
     defaultStyles: {
-      fontFamily: theme.font.family.regular,
+      fontFamily: theme.font.family.bold,
+      color: theme.color.text,
     },
     title: {
-      fontFamily: theme.font.family.bold,
-      fontSize: theme.font.size.xxxxl,
-      color: theme.color.text,
+      fontSize: theme.font.size.xxxl,
+    },
+    subtitle: {
+      fontSize: theme.font.size.xl,
+      fontFamily: theme.font.family.semibold,
     },
     button: {
-      fontSize: size === "large" ? theme.font.size.xxl : theme.font.size.xl,
-      color: theme.color.text,
+      fontSize: size === "large" ? theme.font.size.xl : theme.font.size.lg,
+      fontFamily: theme.font.family.semibold,
+    },
+    body: {
+      fontSize: theme.font.size.md,
+      fontFamily: theme.font.family.regular,
     },
   });
   return (

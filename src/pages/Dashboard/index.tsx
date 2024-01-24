@@ -83,11 +83,7 @@ export default function Dashboard() {
         size="large"
         enterKeyHint="next"
       />
-      <Button
-        size="large"
-        onPress={openOrder}
-        variant="success"
-        isLoading={loading}>
+      <Button onPress={openOrder} variant="success" isLoading={loading}>
         Abrir mesa
       </Button>
     </Container>
