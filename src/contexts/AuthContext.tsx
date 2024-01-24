@@ -7,6 +7,8 @@ import {
 } from "react";
 import { api } from "../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Toast from "react-native-toast-message";
+import { AxiosError } from "axios";
 
 type AuthProviderProps = {
   children: ReactNode;
@@ -75,7 +77,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser({ id, name, token, email });
     } catch (error) {
-      console.log(error);
+      if (error instanceof AxiosError && error.message === "Network Error") {
+        Toast.show({
+          type: "error",
+          text1: "Internet não disponível",
+        });
+        setUser(null);
+        return;
+      }
+      Toast.show({ type: "error", text1: "Falha no login" });
+      console.error(error);
       setUser(null);
     } finally {
       setLoadingAuth(false);
